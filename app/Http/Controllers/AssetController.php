@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\Usage;
 use App\Models\Storage;
 use App\Models\Processor;
+use App\Models\Ram;
 
 class AssetController extends Controller
 {
@@ -181,10 +182,11 @@ class AssetController extends Controller
         // $computers = Asset::all();
         $assets = Asset::where('category_id', '=', '1')->orWhere('category_id','=','2')->orWhere('category_id','=','3')->orWhere('category_id','=','4')->get();
         $processors = Processor::all();
+        $rams = Ram::all();
         $storages = Storage::all();
 
         // dd( $assets );
         
-        return view('reportes.activoscomputo', compact('assets', 'processors', 'storages'));
+        return view('reportes.activoscomputo', compact('assets', 'processors', 'rams', 'storages'));
     }
 }

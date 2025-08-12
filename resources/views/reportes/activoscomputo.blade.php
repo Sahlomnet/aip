@@ -45,6 +45,7 @@
                         <th class="text-center">Uso</th>                        
                         <th class="text-center">Observaciones</th>
                         <th class="text-center">Procesador</th>
+                        <th class="text-center">Memoria</th>
                         <th class="text-center">Almacenamiento</th>
                         <!-- <th class="text-center">Creación</th>
                         <th class="text-center">Actualización</th> -->
@@ -79,6 +80,24 @@
                                         @endif
                                     @endforeach
                                 @endif
+                            </td>
+                            <td  class="text-center list-link">
+                                <a href="{{route('activos.show', $asset->id)}}">
+                                @if (!$rams->isEmpty())
+                                    
+                                    @foreach ($rams as $ram)
+                                        @if ($ram->asset_id == $asset->id)
+                                            {{ $ram->interface ?? ''}}{{' '}}
+                                            {{ $ram->speed ?? ''}}{{' '}}
+                                            {{ $ram->capacity ?? ''}}{{' / '}}
+                                        @endif
+                                        
+                                    @endforeach
+
+                                    
+
+                                @endif
+                                </a>
                             </td>
                             <td  class="text-center list-link">
                                 <a href="{{route('activos.show', $asset->id)}}">
@@ -123,6 +142,7 @@
                         <th class="text-center">Uso</th>                        
                         <th class="text-center">Observaciones</th>
                         <th class="text-center">Procesador</th>
+                        <th class="text-center">Memoria</th>
                         <th class="text-center">Almacenamiento</th>
                         <!-- <th class="text-center">Creación</th>
                         <th class="text-center">Actualización</th> -->
