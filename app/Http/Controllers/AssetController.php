@@ -189,4 +189,46 @@ class AssetController extends Controller
         
         return view('reportes.activoscomputo', compact('assets', 'processors', 'rams', 'storages'));
     }
+
+    public function allocatedassets()
+    {
+        $assets = Asset::where('placement_id', '!=', 1)->get();
+        return view('reportes.activosasignados', compact('assets'));
+    }
+
+    public function unallocatedassets()
+    {
+        $assets = Asset::where('placement_id', 1)->get();
+        return view('reportes.activosnoasignados', compact('assets'));
+    }
+
+    public function current_maintenance()
+    {
+        $hoy = date("Y-m-d");
+        $assets = Asset::whereDate('next_maintenance_date', '>=', date("Y-m-d", strtotime($hoy."+ 2 month")))->get();
+        return view('reportes.mantenimientovigente', compact('assets'));
+    }
+
+    public function upcoming_maintenance()
+    {
+        $hoy = date("Y-m-d");
+        $assets = Asset::whereDate('next_maintenance_date', '>=', $hoy)->whereDate('next_maintenance_date', '<=', date("Y-m-d", strtotime($hoy."+ 2 month")))->get();
+        return view('reportes.mantenimientoproximo', compact('assets'));
+    }
+
+    public function expired_maintenance()
+    {
+        $hoy = date("Y-m-d");
+        $assets = Asset::whereDate('next_maintenance_date', '<=', $hoy)->get();
+        return view('reportes.mantenimientovencido', compact('assets'));
+    }
+
+    public function maintenance_free()
+    {
+        $hoy = date("Y-m-d");
+        $assets = Asset::where('last_maintenance_date', NULL)->get();
+        return view('reportes.sinmantenimiento', compact('assets'));
+    }
+
+
 }

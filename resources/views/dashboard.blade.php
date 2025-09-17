@@ -282,7 +282,7 @@
         var assets_maintenance_ChartCanvas = $('#assets_maintenance_Chart').get(0).getContext('2d')
         var assets_maintenance_Data = {
             labels: [
-                'Correcto',
+                'Vigente',
                 'Próximo',
                 'Vencido',
                 'Sin Mantenimiento',

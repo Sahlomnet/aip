@@ -85,6 +85,13 @@ Route::controller(AssetController::class)->middleware(['auth', 'verified'])->gro
     Route::put('/activos/{asset}', 'update')->name('activos.update');
 
     Route::get('/activoscomputo', 'assetcomputer')->name('reportes.activoscomputo');
+    Route::get('/activosasignados', 'allocatedassets')->name('reportes.activosasignados');
+    Route::get('/activosnoasignados', 'unallocatedassets')->name('reportes.activosnoasignados');
+    Route::get('/mantenimientovigente', 'current_maintenance')->name('reportes.mantenimientovigente');
+    Route::get('/mantenimientoproximo', 'upcoming_maintenance')->name('reportes.mantenimientoproximo');
+    Route::get('/mantenimientovencido', 'expired_maintenance')->name('reportes.mantenimientovencido');
+    Route::get('/sinmantenimiento', 'maintenance_free')->name('reportes.sinmantenimiento');
+        
 });
 
 // Personas
