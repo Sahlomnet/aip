@@ -195,6 +195,11 @@ Route::controller(LicenseController::class)->middleware(['auth', 'verified'])->g
     Route::get('/software/{license}', 'show')->name('software.show');
     Route::get('/software/{license}/edit', 'edit')->name('software.edit');
     Route::put('/software/{license}', 'update')->name('software.update');
+
+    Route::get('/softwarevigente', 'current_software')->name('reportes.softwarevigente');
+    Route::get('/softwareproximo', 'upcoming_software')->name('reportes.softwareproximo');
+    Route::get('/softwarevencido', 'expired_software')->name('reportes.softwarevencido');
+    Route::get('/softwarelibre', 'free_software')->name('reportes.softwarelibre');    
 });
 
 // Movimientos

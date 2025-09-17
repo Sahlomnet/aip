@@ -100,4 +100,34 @@ class LicenseController extends Controller
     {
         //
     }
+
+    public function current_software()
+    {
+        $hoy = date("Y-m-d");
+        $licenses = License::whereDate('expiration_date', '>=', date("Y-m-d", strtotime($hoy."+ 2 month")))->get();
+        // dd($licenses);
+        return view('reportes.softwarevigente', compact('licenses'));
+    }
+    public function upcoming_software()
+
+    {
+        $hoy = date("Y-m-d");
+        $licenses = License::whereDate('expiration_date', '>=', $hoy)->whereDate('expiration_date', '<=', date("Y-m-d", strtotime($hoy."+ 2 month")))->get();
+        return view('reportes.softwareproximo', compact('licenses'));
+    }
+
+    public function expired_software()
+    {
+        $hoy = date("Y-m-d");
+        $licenses = License::whereDate('expiration_date', '<=', $hoy)->get();
+        return view('reportes.softwarevencido', compact('licenses'));
+    }
+
+    public function free_software()
+    {
+        $hoy = date("Y-m-d");
+        $licenses = License::where('expiration_date', NULL)->get();
+        return view('reportes.softwarelibre', compact('licenses'));
+    }
+
 }
