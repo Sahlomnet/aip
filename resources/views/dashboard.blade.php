@@ -74,11 +74,22 @@
                 <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas id="assets_maintenance_Chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 673px;" width="673" height="250" class="chartjs-render-monitor"></canvas>
                 </div>
-                <!-- <div class="card-footer">
+                <div class="card-footer">
                     <div class="text-center">
-                        <span><a href="#">Ver reporte</a></span>
+                        <a href="{{route('reportes.mantenimientovigente')}}" class="btn btn-app bg-success">
+                            <i class="far fa-calendar-check"></i> Vigente
+                        </a>
+                        <a href="{{route('reportes.mantenimientoproximo')}}" class="btn btn-app bg-warning">
+                            <i class="far fa-clock"></i> Próximo
+                        </a>
+                        <a href="{{route('reportes.mantenimientovencido')}}" class="btn btn-app bg-danger">
+                            <i class="far fa-calendar-times"></i> Vencido
+                        </a>
+                        <a href="{{route('reportes.sinmantenimiento')}}" class="btn btn-app bg-secondary">
+                            <i class="fas fa-hands-helping"></i> Libre
+                        </a>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <div class="col-md-6">
@@ -97,11 +108,22 @@
                 <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas id="assets_software_Chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 673px;" width="673" height="250" class="chartjs-render-monitor"></canvas>
                 </div>
-                <!-- <div class="card-footer">
+                <div class="card-footer">
                     <div class="text-center">
-                        <span><a href="#">Ver reporte</a></span>
+                        <a href="{{route('reportes.softwarevigente')}}" class="btn btn-app bg-success">
+                            <i class="far fa-calendar-check"></i> Vigente
+                        </a>
+                        <a href="{{route('reportes.softwareproximo')}}" class="btn btn-app bg-warning">
+                            <i class="far fa-clock"></i> Próximo
+                        </a>
+                        <a href="{{route('reportes.softwarevencido')}}" class="btn btn-app bg-danger">
+                            <i class="far fa-calendar-times"></i> Vencido
+                        </a>
+                        <a href="{{route('reportes.softwarelibre')}}" class="btn btn-app bg-secondary">
+                            <i class="fas fa-hands-helping"></i> Libre
+                        </a>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -285,7 +307,7 @@
                 'Vigente',
                 'Próximo',
                 'Vencido',
-                'Sin Mantenimiento',
+                'Libre',
             ],
             datasets: [
                 {
@@ -299,7 +321,7 @@
                         '#28a745',
                         '#fbbc05',
                         '#dc3545',
-                        '#d2d6de',
+                        '#6c757d',
                     ],
                 }
             ]
@@ -320,10 +342,10 @@
         var assets_software_ChartCanvas = $('#assets_software_Chart').get(0).getContext('2d')
         var assets_software_Data = {
             labels: [
-                'Vigentes',
-                'Próximas',
-                'Vencidas',
-                'Sin Vigencia',
+                'Vigente',
+                'Próximo',
+                'Vencido',
+                'Libre',
             ],
             datasets: [
                 {
@@ -337,7 +359,7 @@
                         '#28a745',
                         '#fbbc05',
                         '#dc3545',
-                        '#d2d6de',
+                        '#6c757d',
                     ],
                 }
             ]
