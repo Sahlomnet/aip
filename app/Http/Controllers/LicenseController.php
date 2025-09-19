@@ -37,7 +37,7 @@ class LicenseController extends Controller
         $request->validate([
             'des' => 'required',
             // 'expiration_date' => 'required',
-            'asset_id' => 'required',
+            // 'asset_id' => 'required',
         ]);
 
         $license = new License();
@@ -79,7 +79,7 @@ class LicenseController extends Controller
     {
         $request->validate([
             'des' => 'required',
-            'asset_id' => 'required',
+            // 'asset_id' => 'required',
         ]);
 
         $license->des = $request->des;
